@@ -1,0 +1,3 @@
+# excluye la carpeta packages
+
+utemAppWF/packages/*
