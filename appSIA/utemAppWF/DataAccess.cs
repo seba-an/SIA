@@ -9,30 +9,30 @@ using System.Windows.Forms;
 
 namespace utemAppWF
 {
-    public class DataAccess 
+    public class DataAccess
     {
 
-        string ConnStr = @"Data Source = C:\sisLabUtem.db ; Version = 3"; 
-        
+        string ConnStr = @"Data Source = C:\sisLabUtem.db ; Version = 3";
+
         //metodo para llenar los combobox con los datos de la bdd 
 
         public void BindComboBox(ComboBox comboBoxName, string Query, string columnName, string tableName, string ID)
         {
-            using(SQLiteConnection Conn = new SQLiteConnection(ConnStr))
+            using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
             {
                 try
                 {
                     SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(Query, Conn);
-         
+
                     Conn.Open();
-                    DataSet dSet = new DataSet(); 
-                    dAdapter.Fill(dSet, tableName); 
+                    DataSet dSet = new DataSet();
+                    dAdapter.Fill(dSet, tableName);
                     comboBoxName.DisplayMember = columnName;
                     comboBoxName.ValueMember = ID;
                     comboBoxName.DataSource = dSet.Tables[tableName];
                     Conn.Close();
-                }  
-                catch(Exception Ex)
+                }
+                catch (Exception)
                 {
                     MessageBox.Show("Ha ocurrido un error");
                 }
@@ -40,13 +40,13 @@ namespace utemAppWF
             }
             comboBoxName.SelectedIndex = -1;
 
-        } 
+        }
 
         //metodo para llenar el textbox "capacidad" en funcion del laboratorio escogido
 
-        public void fetchTextBox(ComboBox comboBoxName, TextBox textBoxName, string Query, string columnName, string tableName, string ID)
+        public void fetchTextBox(ComboBox comboBoxName, TextBox textBoxName, string Query, string columnName)
         {
-        
+
             using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
             {
                 try
@@ -58,16 +58,16 @@ namespace utemAppWF
                     myReader = Cmd.ExecuteReader();
 
                     while (myReader.Read())
-                    {   
+                    {
 
                         string cadena = (string)myReader[columnName].ToString();
-                        textBoxName.Text = cadena; 
+                        textBoxName.Text = cadena;
 
                     }
                     Conn.Close();
 
                 }
-                catch (Exception Ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ha ocurrido un error");
                 }
@@ -77,7 +77,7 @@ namespace utemAppWF
 
         //metodo para llenar el textbox "disponibilidad" en funcion del laboratorio
 
-        public void disponibilidadTextBox(ComboBox comboBoxName, TextBox textBoxName, string Query, string columnName, string tableName, string ID)
+        public void disponibilidadTextBox(ComboBox comboBoxName, TextBox textBoxName, string Query, string columnName)
         {
 
             using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
@@ -97,7 +97,7 @@ namespace utemAppWF
                         if (disponible == "1")
                         {
                             string pos = "Si";
-                            textBoxName.Text = pos; 
+                            textBoxName.Text = pos;
                         }
                         else
                         {
@@ -109,7 +109,7 @@ namespace utemAppWF
                     Conn.Close();
 
                 }
-                catch (Exception Ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ha ocurrido un error");
                 }
@@ -121,7 +121,7 @@ namespace utemAppWF
         //metodo para llenar los textbox "nombre" y "apellido" en funcion de la asignatura
 
 
-        public void nombreCompletoTextbox(ComboBox comboBoxName, TextBox textBoxName, string Query, string columnName, string tableName, string IDrepr, string IDencarg)
+        public void nombreCompletoTextbox(ComboBox comboBoxName, TextBox textBoxName, string Query, string columnName)
         {
             using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
             {
@@ -133,25 +133,70 @@ namespace utemAppWF
                     SQLiteDataReader myReader;
                     myReader = Cmd.ExecuteReader();
 
+              
+
                     while (myReader.Read())
                     {
                         string cadena = (string)myReader[columnName].ToString();
                         textBoxName.Text = cadena;
-                        
+
 
                     }
                     Conn.Close();
                 }
-                catch(Exception Ex)
+                catch (Exception Ex)
                 {
                     MessageBox.Show("Ha ocurrido un error");
                 }
             }
 
-        } 
+        }
+        /*
+        public void llenarHorario(string Hora, ComboBox comboBoxName, string Query, string tableName, string columnName, string ID1, string ID2, TextBox txtbx1, TextBox txtbx2, TextBox txtbx3, TextBox txtbx4, TextBox txtbx5, TextBox txtbx6)
+        {
+            TextBox[] cajas = new TextBox[] { txtbx1, txtbx2, txtbx3, txtbx4, txtbx5, txtbx6 };
+
+            foreach (TextBox t in cajas)
+            {
+                using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
+                {
+                    try
+                    {
+                        SQLiteCommand Cmd = new SQLiteCommand(Query, Conn);
+                        Conn.Open();
+                        Cmd.ExecuteNonQuery();
+                        SQLiteDataReader myReader;
+                        myReader = Cmd.ExecuteReader();
+
+
+                    while (myReader.Read())
+                    {
+                        string horaInicio = (string)myReader[columnName].ToString();
+                        //.Text = horaInicio;
+                        //string hora = "8:00:00";
+                        if(string.ReferenceEquals(horaInicio, Hora))
+                        {
+                            string valor = "Asignado";
+                            t.Text = valor;
+                        }
+                        else
+                        {   
+                            string valor1 = "Libre";
+                            t.Text = valor1;
+                        }
+
+                    }    
+                    Conn.Close();
+                }     
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Ha ocurrido un error");
+                }
+            }
+
+            }
+        }*/
 
 
     }
-
-
 }

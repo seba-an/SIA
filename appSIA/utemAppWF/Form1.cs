@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 
 
+
 namespace utemAppWF
 {
     public partial class Form1 : Form
@@ -38,17 +39,21 @@ namespace utemAppWF
             if (LabCombobox.SelectedItem != null)
             {
                 DataRowView drv = LabCombobox.SelectedItem as DataRowView;
-
+                
                 Debug.WriteLine("item " + drv.Row["nombre"].ToString());
                 Debug.WriteLine("Value " + drv.Row["id_laboratorio"].ToString());
                 Debug.WriteLine("Value " + LabCombobox.SelectedValue.ToString());
-           
+                
                 DataAccess da2 = new DataAccess();
 
-                da2.fetchTextBox(LabCombobox, capacidadTextbox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "capacidad", "Laboratorio", "id_laboratorio");
+                da2.fetchTextBox(LabCombobox, capacidadTextbox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "capacidad");
 
-                da2.disponibilidadTextBox(LabCombobox, dispoTextBox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "disponibilidad", "Laboratorio", "id_laboratorio");
+                da2.disponibilidadTextBox(LabCombobox, dispoTextBox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "disponibilidad");
+                
+              
+
             }
+
 
         }
 
@@ -64,6 +69,20 @@ namespace utemAppWF
         {
             nombreTxtBox.Text = " ";
             apellidoTxtBox.Text = " ";
+                DataAccess da3 = new DataAccess();
+
+                da3.nombreCompletoTextbox(asignaturaCombobox, nombreTxtBox, 
+                    $"select r.id_representante, en.id_encargado, en.nombre, se.id_seccion, se.asignatura " +
+                    $"from Representante as r, Encargado as en, Seccion as se  " +
+                    $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text +"'" ,
+                    "nombre");
+
+                da3.nombreCompletoTextbox(asignaturaCombobox, apellidoTxtBox,
+                    $"select r.id_representante, en.id_encargado, en.apellido, se.id_seccion, se.asignatura " +
+                    $"from Representante as r, Encargado as en, Seccion as se  " +
+                    $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text + "'",
+                    "apellido");
+            /*
             if (asignaturaCombobox.SelectedItem != null)
             {
                 DataRowView drv = asignaturaCombobox.SelectedItem as DataRowView;
@@ -72,23 +91,14 @@ namespace utemAppWF
                 Debug.WriteLine("Value " + drv.Row["id_seccion"].ToString());
                 Debug.WriteLine("Value " + asignaturaCombobox.SelectedValue.ToString());
 
-                DataAccess da3 = new DataAccess();
 
-                da3.nombreCompletoTextbox(asignaturaCombobox, nombreTxtBox, 
-                    $"select r.id_representante, en.id_encargado, en.nombre, se.id_seccion, se.asignatura " +
-                    $"from Representante as r, Encargado as en, Seccion as se  " +
-                    $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text +"'" ,
-                    "nombre", "Encargado", "id_representante" , "id_encargado");
-
-                da3.nombreCompletoTextbox(asignaturaCombobox, apellidoTxtBox,
-                 $"select r.id_representante, en.id_encargado, en.apellido, se.id_seccion, se.asignatura " +
-                 $"from Representante as r, Encargado as en, Seccion as se  " +
-                 $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text + "'",
-                 "apellido", "Encargado", "id_representante", "id_encargado"); 
+         
 
             
-            }
+            }*/
         }
+
+      
 
         private void nombreTxtBox_TextChanged(object sender, EventArgs e)
         {
@@ -98,6 +108,12 @@ namespace utemAppWF
         private void apellidoTxtBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void addAsignButton_Click(object sender, EventArgs e)
+        {
+            agregarDatosForm addDataForm = new agregarDatosForm();
+            addDataForm.Show();
         }
     }
 }

@@ -118,6 +118,7 @@
             this.asignaturaLabel = new System.Windows.Forms.Label();
             this.nombreTxtBox = new System.Windows.Forms.TextBox();
             this.apellidoTxtBox = new System.Windows.Forms.TextBox();
+            this.addAsignButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,7 +151,7 @@
             // 
             // capacidadTextbox
             // 
-            this.capacidadTextbox.Location = new System.Drawing.Point(114, 137);
+            this.capacidadTextbox.Location = new System.Drawing.Point(114, 132);
             this.capacidadTextbox.Name = "capacidadTextbox";
             this.capacidadTextbox.Size = new System.Drawing.Size(100, 21);
             this.capacidadTextbox.TabIndex = 4;
@@ -159,7 +160,7 @@
             // capacidadLabel
             // 
             this.capacidadLabel.AutoSize = true;
-            this.capacidadLabel.Location = new System.Drawing.Point(26, 140);
+            this.capacidadLabel.Location = new System.Drawing.Point(27, 135);
             this.capacidadLabel.Name = "capacidadLabel";
             this.capacidadLabel.Size = new System.Drawing.Size(67, 13);
             this.capacidadLabel.TabIndex = 5;
@@ -168,7 +169,7 @@
             // DisponibilidadLabel
             // 
             this.DisponibilidadLabel.AutoSize = true;
-            this.DisponibilidadLabel.Location = new System.Drawing.Point(220, 140);
+            this.DisponibilidadLabel.Location = new System.Drawing.Point(220, 135);
             this.DisponibilidadLabel.Name = "DisponibilidadLabel";
             this.DisponibilidadLabel.Size = new System.Drawing.Size(86, 13);
             this.DisponibilidadLabel.TabIndex = 6;
@@ -176,7 +177,7 @@
             // 
             // dispoTextBox
             // 
-            this.dispoTextBox.Location = new System.Drawing.Point(312, 137);
+            this.dispoTextBox.Location = new System.Drawing.Point(312, 132);
             this.dispoTextBox.Name = "dispoTextBox";
             this.dispoTextBox.Size = new System.Drawing.Size(102, 21);
             this.dispoTextBox.TabIndex = 7;
@@ -703,7 +704,7 @@
             // segunPerLabel
             // 
             this.segunPerLabel.AutoSize = true;
-            this.segunPerLabel.Location = new System.Drawing.Point(37, 260);
+            this.segunPerLabel.Location = new System.Drawing.Point(37, 261);
             this.segunPerLabel.Name = "segunPerLabel";
             this.segunPerLabel.Size = new System.Drawing.Size(71, 13);
             this.segunPerLabel.TabIndex = 64;
@@ -712,7 +713,7 @@
             // tercerPerLabel
             // 
             this.tercerPerLabel.AutoSize = true;
-            this.tercerPerLabel.Location = new System.Drawing.Point(30, 290);
+            this.tercerPerLabel.Location = new System.Drawing.Point(30, 292);
             this.tercerPerLabel.Name = "tercerPerLabel";
             this.tercerPerLabel.Size = new System.Drawing.Size(78, 13);
             this.tercerPerLabel.TabIndex = 65;
@@ -721,7 +722,7 @@
             // cuartoPerLabel
             // 
             this.cuartoPerLabel.AutoSize = true;
-            this.cuartoPerLabel.Location = new System.Drawing.Point(30, 320);
+            this.cuartoPerLabel.Location = new System.Drawing.Point(30, 323);
             this.cuartoPerLabel.Name = "cuartoPerLabel";
             this.cuartoPerLabel.Size = new System.Drawing.Size(78, 13);
             this.cuartoPerLabel.TabIndex = 66;
@@ -730,7 +731,7 @@
             // quintoPerLabel
             // 
             this.quintoPerLabel.AutoSize = true;
-            this.quintoPerLabel.Location = new System.Drawing.Point(33, 350);
+            this.quintoPerLabel.Location = new System.Drawing.Point(30, 354);
             this.quintoPerLabel.Name = "quintoPerLabel";
             this.quintoPerLabel.Size = new System.Drawing.Size(78, 13);
             this.quintoPerLabel.TabIndex = 67;
@@ -739,7 +740,7 @@
             // sextoPerLabel
             // 
             this.sextoPerLabel.AutoSize = true;
-            this.sextoPerLabel.Location = new System.Drawing.Point(30, 380);
+            this.sextoPerLabel.Location = new System.Drawing.Point(30, 385);
             this.sextoPerLabel.Name = "sextoPerLabel";
             this.sextoPerLabel.Size = new System.Drawing.Size(78, 13);
             this.sextoPerLabel.TabIndex = 68;
@@ -748,7 +749,7 @@
             // septPerLabel
             // 
             this.septPerLabel.AutoSize = true;
-            this.septPerLabel.Location = new System.Drawing.Point(30, 410);
+            this.septPerLabel.Location = new System.Drawing.Point(30, 416);
             this.septPerLabel.Name = "septPerLabel";
             this.septPerLabel.Size = new System.Drawing.Size(78, 13);
             this.septPerLabel.TabIndex = 69;
@@ -757,7 +758,7 @@
             // octPerLabel
             // 
             this.octPerLabel.AutoSize = true;
-            this.octPerLabel.Location = new System.Drawing.Point(30, 440);
+            this.octPerLabel.Location = new System.Drawing.Point(30, 447);
             this.octPerLabel.Name = "octPerLabel";
             this.octPerLabel.Size = new System.Drawing.Size(78, 13);
             this.octPerLabel.TabIndex = 70;
@@ -766,7 +767,7 @@
             // novPerLabel
             // 
             this.novPerLabel.AutoSize = true;
-            this.novPerLabel.Location = new System.Drawing.Point(30, 470);
+            this.novPerLabel.Location = new System.Drawing.Point(30, 478);
             this.novPerLabel.Name = "novPerLabel";
             this.novPerLabel.Size = new System.Drawing.Size(78, 13);
             this.novPerLabel.TabIndex = 71;
@@ -784,7 +785,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(798, 260);
+            this.label2.Location = new System.Drawing.Point(798, 261);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 73;
@@ -793,7 +794,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(798, 290);
+            this.label3.Location = new System.Drawing.Point(798, 292);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 74;
@@ -802,7 +803,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(798, 320);
+            this.label4.Location = new System.Drawing.Point(798, 323);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 75;
@@ -811,7 +812,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(798, 350);
+            this.label5.Location = new System.Drawing.Point(798, 354);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 76;
@@ -820,7 +821,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(798, 380);
+            this.label6.Location = new System.Drawing.Point(798, 385);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 77;
@@ -829,7 +830,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(798, 410);
+            this.label7.Location = new System.Drawing.Point(798, 416);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 78;
@@ -838,7 +839,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(798, 440);
+            this.label8.Location = new System.Drawing.Point(798, 447);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 79;
@@ -847,7 +848,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(798, 470);
+            this.label9.Location = new System.Drawing.Point(798, 478);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 80;
@@ -887,11 +888,25 @@
             this.apellidoTxtBox.TabIndex = 84;
             this.apellidoTxtBox.TextChanged += new System.EventHandler(this.apellidoTxtBox_TextChanged);
             // 
+            // addAsignButton
+            // 
+            this.addAsignButton.Image = global::utemAppWF.Properties.Resources.add_1_icon;
+            this.addAsignButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addAsignButton.Location = new System.Drawing.Point(682, 26);
+            this.addAsignButton.Name = "addAsignButton";
+            this.addAsignButton.Size = new System.Drawing.Size(156, 36);
+            this.addAsignButton.TabIndex = 85;
+            this.addAsignButton.Text = "Agregar asignación...";
+            this.addAsignButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.addAsignButton.UseVisualStyleBackColor = true;
+            this.addAsignButton.Click += new System.EventHandler(this.addAsignButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 530);
+            this.Controls.Add(this.addAsignButton);
             this.Controls.Add(this.apellidoTxtBox);
             this.Controls.Add(this.nombreTxtBox);
             this.Controls.Add(this.asignaturaLabel);
@@ -1029,6 +1044,7 @@
         private System.Windows.Forms.Label asignaturaLabel;
         private System.Windows.Forms.TextBox nombreTxtBox;
         private System.Windows.Forms.TextBox apellidoTxtBox;
+        private System.Windows.Forms.Button addAsignButton;
     }
 }
 

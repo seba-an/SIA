@@ -17,4 +17,4 @@ C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\De
 C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\System.Data.SQLite.xml
 C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\WindowsFormsCalendar.dll
+C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.agregarDatosForm.resources
