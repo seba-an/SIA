@@ -151,51 +151,7 @@ namespace utemAppWF
             }
 
         }
-        /*
-        public void llenarHorario(string Hora, ComboBox comboBoxName, string Query, string tableName, string columnName, string ID1, string ID2, TextBox txtbx1, TextBox txtbx2, TextBox txtbx3, TextBox txtbx4, TextBox txtbx5, TextBox txtbx6)
-        {
-            TextBox[] cajas = new TextBox[] { txtbx1, txtbx2, txtbx3, txtbx4, txtbx5, txtbx6 };
-
-            foreach (TextBox t in cajas)
-            {
-                using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
-                {
-                    try
-                    {
-                        SQLiteCommand Cmd = new SQLiteCommand(Query, Conn);
-                        Conn.Open();
-                        Cmd.ExecuteNonQuery();
-                        SQLiteDataReader myReader;
-                        myReader = Cmd.ExecuteReader();
-
-
-                    while (myReader.Read())
-                    {
-                        string horaInicio = (string)myReader[columnName].ToString();
-                        //.Text = horaInicio;
-                        //string hora = "8:00:00";
-                        if(string.ReferenceEquals(horaInicio, Hora))
-                        {
-                            string valor = "Asignado";
-                            t.Text = valor;
-                        }
-                        else
-                        {   
-                            string valor1 = "Libre";
-                            t.Text = valor1;
-                        }
-
-                    }    
-                    Conn.Close();
-                }     
-                catch (Exception Ex)
-                {
-                    MessageBox.Show("Ha ocurrido un error");
-                }
-            }
-
-            }
-        }*/
+      
 
 
     }

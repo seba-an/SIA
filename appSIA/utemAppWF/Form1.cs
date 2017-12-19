@@ -36,24 +36,11 @@ namespace utemAppWF
         {
             capacidadTextbox.Text = " ";
             dispoTextBox.Text = " ";
-            if (LabCombobox.SelectedItem != null)
-            {
-                DataRowView drv = LabCombobox.SelectedItem as DataRowView;
-                
-                Debug.WriteLine("item " + drv.Row["nombre"].ToString());
-                Debug.WriteLine("Value " + drv.Row["id_laboratorio"].ToString());
-                Debug.WriteLine("Value " + LabCombobox.SelectedValue.ToString());
-                
-                DataAccess da2 = new DataAccess();
 
-                da2.fetchTextBox(LabCombobox, capacidadTextbox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "capacidad");
+            DataAccess da2 = new DataAccess();
 
-                da2.disponibilidadTextBox(LabCombobox, dispoTextBox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "disponibilidad");
-                
-              
-
-            }
-
+            da2.fetchTextBox(LabCombobox, capacidadTextbox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "capacidad");
+            da2.disponibilidadTextBox(LabCombobox, dispoTextBox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "disponibilidad");
 
         }
 
@@ -82,20 +69,7 @@ namespace utemAppWF
                     $"from Representante as r, Encargado as en, Seccion as se  " +
                     $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text + "'",
                     "apellido");
-            /*
-            if (asignaturaCombobox.SelectedItem != null)
-            {
-                DataRowView drv = asignaturaCombobox.SelectedItem as DataRowView;
-
-                Debug.WriteLine("item " + drv.Row["asignatura"].ToString());
-                Debug.WriteLine("Value " + drv.Row["id_seccion"].ToString());
-                Debug.WriteLine("Value " + asignaturaCombobox.SelectedValue.ToString());
-
-
-         
-
-            
-            }*/
+   
         }
 
       

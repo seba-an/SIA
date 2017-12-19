@@ -107,7 +107,7 @@
             this.saveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.saveButton.Location = new System.Drawing.Point(28, 211);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(78, 26);
+            this.saveButton.Size = new System.Drawing.Size(78, 35);
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "Guardar";
             this.saveButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

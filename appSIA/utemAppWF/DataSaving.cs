@@ -15,19 +15,23 @@ namespace utemAppWF
 
         //esto esta incompleto
 
-        public void agregarAsignacion(ComboBox cBox1, ComboBox cBox2, ComboBox cBox3, string IDlab, string IDprof)
+        public void agregarAsignacion(ComboBox cBox1, ComboBox cBox2, ComboBox cBox3, string IDlab, string IDsecc)
         {
             using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
             {
                 try
                 {
-                    string Query = $"select id_laboratorio, id_seccion from Laboratorio, Seccion" +
-                        $" insert into Asignacion(cod_laboratorio,cod_secc,dia)  values(@cod_laboratorio, @cod_secc, @dia)";
+
+                    string Query = $"select la.id_laboratorio, se.id_seccion from Laboratorio as la, Seccion as se" +
+                        $" insert into Asignacion(cod_laboratorio,cod_secc,dia)  values(la.id_laboratorio, se.id_seccion, @dia)" +
+                        $"where nombre se.asignatura = '"+ cBox1.SelectedItem  +"' and la.nombre = '" + cBox2.SelectedItem +"'";
+
                     SQLiteCommand cmd = new SQLiteCommand(Query, Conn);
-                    Conn.Open();
+                    Conn.Open(); 
+                    
                     cmd.Parameters.AddWithValue("@cod_laboratorio", IDlab);
-                    cmd.Parameters.AddWithValue("@cod_secc", IDprof);
-                    cmd.Parameters.AddWithValue("@dia", cBox3.Text);
+                    cmd.Parameters.AddWithValue("@cod_secc", IDsecc);
+                    cmd.Parameters.AddWithValue("@dia", cBox3.SelectedItem.ToString());
                     int k = cmd.ExecuteNonQuery();
                     if (k > 0)
                     {
