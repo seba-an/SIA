@@ -23,37 +23,27 @@ namespace utemAppWF
 
         public Form1()
         {
-            InitializeComponent();
+            
             this.Text = "Sistema de Laboratorios UTEM";
-
+            InitializeComponent();
             DataAccess da = new DataAccess();
 
-            da.BindComboBox(asignaturaCombobox, $"select id_seccion, asignatura from Seccion", "asignatura", "id_seccion", "Seccion");
-            da.BindComboBox(LabCombobox, $"select id_laboratorio, nombre from Laboratorio", "nombre", "Laboratorio", "id_laboratorio");  
-            
+            da.BindComboBox(asignaturaCombobox, $"select Nombre_Asignatura from Asignatura", "Nombre_Asignatura", "Asignatura", "id_asignatura");
+            da.BindComboBox(LabCombobox, $"select id_laboratorio, nombre from Laboratorio", "nombre", "Laboratorio", "id_laboratorio");
+            da.BindComboBox(comboBox1, $"select codigo from Seccion  ", "codigo", "Seccion", "id_seccion");
+
+
+
 
         }
+
 
         private void LabCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             
             cleanTxt();
+            
 
-            if (LabCombobox.SelectedItem != null)
-            {
-                DataRowView drv = LabCombobox.SelectedItem as DataRowView;
-                
-                Debug.WriteLine("item " + drv.Row["nombre"].ToString());
-                Debug.WriteLine("Value " + drv.Row["id_laboratorio"].ToString());
-                Debug.WriteLine("Value " + LabCombobox.SelectedValue.ToString());
-                
-                DataAccess da2 = new DataAccess();
-
-                da2.fetchTextBox(LabCombobox, capacidadTextbox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "capacidad");
-
-                da2.disponibilidadTextBox(LabCombobox, dispoTextBox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "disponibilidad");
-                
-            }
 
 
         }
@@ -69,6 +59,8 @@ namespace utemAppWF
         private void asignaturaCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             cleanTxt();
+
+
 
         }
 
@@ -152,28 +144,11 @@ namespace utemAppWF
 
         }
 
-        agregarDatosForm addDataForm = null;
-
         private void addAsignButton_Click(object sender, EventArgs e)
-        {   
-            if (addDataForm == null)
-            {
-                addDataForm = new agregarDatosForm();
-                addDataForm.FormClosed += new FormClosedEventHandler(addDataForm_FormClosed);
-                addDataForm.Show(this); 
-
-            }
-            else
-            {
-                addDataForm.BringToFront();
-            }
-        }
-        
-        private void addDataForm_FormClosed(object sender, EventArgs e)
         {
-            addDataForm = null;
+            agregarDatosForm addDataForm = new agregarDatosForm();
+            addDataForm.Show();
         }
-
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -194,96 +169,398 @@ namespace utemAppWF
 
         private void button2_Click(object sender, EventArgs e)
         {
+       
+
             DataAccess da3 = new DataAccess();
-            if (asignaturaCombobox !=null && LabCombobox != null)
+
+
+            if (asignaturaCombobox !=null && LabCombobox != null && comboBox1!= null)
             {
                 da3.nombreCompletoTextbox(asignaturaCombobox, nombreTxtBox,
                     $"select r.id_representante, en.id_encargado, en.nombre, se.id_seccion, se.asignatura " +
                     $"from Representante as r, Encargado as en, Seccion as se  " +
                     $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text + "'",
                     "nombre");
-
                 da3.nombreCompletoTextbox(asignaturaCombobox, apellidoTxtBox,
-                    $"select r.id_representante, en.id_encargado, en.apellido, se.id_seccion, se.asignatura " +
-                    $"from Representante as r, Encargado as en, Seccion as se  " +
-                    $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text + "'",
-                    "apellido");
+                     $"select r.id_representante, en.id_encargado, en.apellido, se.id_seccion, se.asignatura " +
+                     $"from Representante as r, Encargado as en, Seccion as se  " +
+                     $"where en.id_encargado = r.cod_encargado and se.id_seccion = r.cod_seccion and se.asignatura ='" + asignaturaCombobox.Text + "'",
+                      "apellido");
+
 
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox1,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select * " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo= 1 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and se.codigo= '"+comboBox1.Text+"'",
+                    "secc");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox7,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select * " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo= '" + comboBox1.Text+ "'",
+                    "secc");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox13,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select *" +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=3 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
-                da3.nombreCompletoTextbox(asignaturaCombobox, textBox19,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=3 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox18,
+                    $"select * " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=4 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo= 4 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox25,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select * " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=5 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=5 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox31,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select *" +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=6 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=6 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox37,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select * " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=7 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo= 7 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox43,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select * " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=8 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=8 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox49,
-                    $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
+                    $"select *" +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=9 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
-                    "codigo");
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=9 and Periodo.Nombre_Dia='Lunes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox2,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox8,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox14,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=3 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox19,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=4 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox26,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=5 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox32,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=6 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox38,
+                    $"select *" +   
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=7 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox44,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=8 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox50,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=9 and Periodo.Nombre_Dia='Martes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox3,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox9,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox15,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=3 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox20,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=4 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox27,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=5 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox33,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=6 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox39,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=7 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox45,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=8 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox51,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=9 and Periodo.Nombre_Dia='Miercoles' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox4,
+                     $"select *" +
+                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                     $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Jueves' and " +
+                     $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                     "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox10,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox16,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=3 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox21,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=4 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox28,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=5 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox34,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=6 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox40,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=7 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox46,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=8 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox52,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=9 and Periodo.Nombre_Dia='Jueves' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox5,
+                     $"select *" +
+                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                     $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Viernes' and " +
+                     $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                     "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox11,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox17,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=3 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox22,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=4 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox29,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=5 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox35,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=6 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox41,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=7 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox47,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=8 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox53,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=9 and Periodo.Nombre_Dia='Viernes' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox6,
+                     $"select *" +
+                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                     $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Sabado' and " +
+                     $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox12,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox18,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=3 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox23,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=4 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox20,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=5 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox36,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=6 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox42,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=7 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox48,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=8 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+                da3.nombreCompletoTextbox(asignaturaCombobox, textBox54,
+                    $"select *" +
+                    $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
+                    $"where se.asignatura='" + asignaturaCombobox.Text + "' and Periodo.NPeriodo=9 and Periodo.Nombre_Dia='Sabado' and " +
+                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio  and se.codigo= '" + comboBox1.Text + "'",
+                    "secc");
+
+
+
+
+
+
+
+                da3.fetchTextBox(LabCombobox, capacidadTextbox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "capacidad");
+
+                da3.disponibilidadTextBox(LabCombobox, dispoTextBox, $"select * from Laboratorio where nombre = '" + LabCombobox.Text + "'", "disponibilidad");
 
             }
-            if (asignaturaCombobox == null && LabCombobox != null)
+            if ( LabCombobox != null && asignaturaCombobox.Text == "")
             {
 
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox1,
                     $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where  Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio",
-                    "Nombre_Laboratorio");
+                    $"where Periodo.NPeriodo=1 and Periodo.Nombre_Dia='Lunes' and" +
+                    $" '" + LabCombobox.Text + "'= Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
+                    "codigo");
                 da3.nombreCompletoTextbox(asignaturaCombobox, textBox7,
                     $"select Laboratorio.Nombre, Periodo.Nombre_Laboratorio, Periodo.NPeriodo,Periodo.Nombre_Dia,r.id_representante, se.codigo, se.asignatura " +
                     $"from  laboratorio, Representante as r, Periodo, Seccion as se  " +
-                    $"where  Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Lunes' and" +
-                    $"'" + LabCombobox.Text + "'=Periodo.Nombre_Laboratorio",
-                    "Nombre_Laboratorio");
+                    $"where Periodo.NPeriodo=2 and Periodo.Nombre_Dia='Lunes' and" +
+                    $" '" + LabCombobox.Text + "'= Periodo.Nombre_Laboratorio and  se.codigo=Periodo.secc",
+                    "codigo");
+               
+
             }
         }
 
         private void textBox25_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

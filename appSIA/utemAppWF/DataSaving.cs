@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
-//using Dapper;
 
 namespace utemAppWF
 {
@@ -16,25 +15,20 @@ namespace utemAppWF
 
         //esto esta incompleto
 
-        public void agregarAsignacion(ComboBox cBox1, ComboBox cBox2, ComboBox cBox3)
+        public void agregarAsignacion(ComboBox cBox1, ComboBox cBox2, ComboBox cBox3, string IDlab, string IDprof)
         {
             using (SQLiteConnection Conn = new SQLiteConnection(ConnStr))
             {
                 try
                 {
-
-                    string Query1 = $"insert into Asignacion [(id_asignacion, cod_laboratorio, cod_secc)] values(@idlab, @idsecc) " +
-                        $"select la.id_laboratorio, la.nombre, se.id_seccion, se.asignatura from Laboratorio as la, Seccion as se " +
-                        $"where se.asignatura = '" + cBox1.SelectedItem + "' and la.nombre = '" + cBox2.SelectedItem + "' ";
-                    // Query2 = $"insert into Asignacion [(id_asignacion, cod_laboratorio, cod_secc)] values(la.id_laboratorio, se.id_seccion)";
-
-                    //SQLiteCommand cmd2 = new SQLiteCommand(Query2, Conn);
+                    string Query = $"select id_laboratorio, id_seccion from Laboratorio, Seccion" +
+                        $" insert into Asignacion(cod_laboratorio,cod_secc,dia)  values(@cod_laboratorio, @cod_secc, @dia)";
+                    SQLiteCommand cmd = new SQLiteCommand(Query, Conn);
                     Conn.Open();
-
-                    SQLiteCommand cmd1 = new SQLiteCommand(Query1, Conn);
-                    cmd1.ExecuteNonQuery();
-                    /*
-                    int k = cmd1.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@cod_laboratorio", IDlab);
+                    cmd.Parameters.AddWithValue("@cod_secc", IDprof);
+                    cmd.Parameters.AddWithValue("@dia", cBox3.Text);
+                    int k = cmd.ExecuteNonQuery();
                     if (k > 0)
                     {
                         MessageBox.Show("La asignación ha sido exitosa!");
@@ -42,7 +36,7 @@ namespace utemAppWF
                     else
                     {
                         MessageBox.Show("No se ha podido asignar!");
-                    }*/
+                    }
                 } 
                 catch(Exception Ex)
                 {

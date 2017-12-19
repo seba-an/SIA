@@ -42,12 +42,7 @@ namespace utemAppWF
         {
             DataSaving dS = new DataSaving();
 
-            dS.agregarAsignacion(ramoComboBox,salaComboBox,diasCombobox);
-        }
-
-        private void agregarDatosForm_Load(object sender, EventArgs e)
-        {
-
+            dS.agregarAsignacion(ramoComboBox,salaComboBox,diasCombobox,"id_encargado","id_seccion");
         }
     }
 }
