@@ -38,6 +38,8 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.diasCombobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.periodoComboBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ramoComboBox
@@ -105,9 +107,9 @@
             this.saveButton.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Image = global::utemAppWF.Properties.Resources.sign_check_icon;
             this.saveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.saveButton.Location = new System.Drawing.Point(28, 211);
+            this.saveButton.Location = new System.Drawing.Point(28, 242);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(78, 35);
+            this.saveButton.Size = new System.Drawing.Size(78, 26);
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "Guardar";
             this.saveButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,11 +134,31 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Escoger Día";
             // 
+            // periodoComboBox
+            // 
+            this.periodoComboBox.FormattingEnabled = true;
+            this.periodoComboBox.Location = new System.Drawing.Point(161, 196);
+            this.periodoComboBox.Name = "periodoComboBox";
+            this.periodoComboBox.Size = new System.Drawing.Size(307, 21);
+            this.periodoComboBox.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 199);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Escoger Periodo";
+            // 
             // agregarDatosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 406);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.periodoComboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.diasCombobox);
             this.Controls.Add(this.saveButton);
@@ -149,6 +171,7 @@
             this.Controls.Add(this.ramoComboBox);
             this.Name = "agregarDatosForm";
             this.Text = "agregarDatosForm";
+            this.Load += new System.EventHandler(this.agregarDatosForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +189,7 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.ComboBox diasCombobox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox periodoComboBox;
+        private System.Windows.Forms.Label label5;
     }
 }

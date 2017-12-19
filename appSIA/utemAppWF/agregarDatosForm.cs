@@ -42,10 +42,11 @@ namespace utemAppWF
         {
             DataSaving dS = new DataSaving();
 
-            if (ramoComboBox.SelectedItem != null && salaComboBox.SelectedItem != null && diasCombobox.SelectedItem != null)
-            {
-                dS.agregarAsignacion(ramoComboBox, salaComboBox, diasCombobox, "id_laboratorio", "id_seccion");
-            }
+            dS.agregarAsignacion(ramoComboBox,salaComboBox,diasCombobox);
+        }
+
+        private void agregarDatosForm_Load(object sender, EventArgs e)
+        {
 
         }
     }
