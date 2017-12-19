@@ -73,6 +73,36 @@ namespace utemAppWF.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_questionssvg_1579793 {
+            get {
+                object obj = ResourceManager.GetObject("if_questionssvg_1579793", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_sync_126579 {
+            get {
+                object obj = ResourceManager.GetObject("if_sync_126579", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_sync_126579__1_ {
+            get {
+                object obj = ResourceManager.GetObject("if_sync_126579 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sign_check_icon {
             get {
                 object obj = ResourceManager.GetObject("sign-check-icon", resourceCulture);
