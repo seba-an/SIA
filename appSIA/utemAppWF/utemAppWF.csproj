@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.4\lib\net451\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -76,6 +73,7 @@
     <Compile Include="agregarDatosForm.Designer.cs">
       <DependentUpon>agregarDatosForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataSaving.cs" />
     <Compile Include="Form1.cs">
@@ -84,6 +82,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Laboratorio.cs" />
     <Compile Include="Profesor.cs" />
     <Compile Include="Program.cs" />
@@ -127,13 +126,16 @@
     <None Include="Properties\add-1-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\if_sync_126579 %281%29.png" />
+    <None Include="Resources\if_sync_126579.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\if_sync_126579.png" />
+    <None Include="Resources\if_questionssvg_1579793.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\if_questionssvg_1579793.png" />
+    <None Include="Resources\sign-check-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_sync_126579 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.106.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.106.0\build\net46\System.Data.SQLite.Core.targets')" />

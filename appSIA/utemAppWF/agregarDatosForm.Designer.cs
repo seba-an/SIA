@@ -35,11 +35,14 @@
             this.surnameTxtBox = new System.Windows.Forms.TextBox();
             this.salaComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
             this.diasCombobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.periodoComboBox = new System.Windows.Forms.ComboBox();
+            this.seccionComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.numSalaTxtBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.refreshBttn = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ramoComboBox
@@ -49,6 +52,7 @@
             this.ramoComboBox.Name = "ramoComboBox";
             this.ramoComboBox.Size = new System.Drawing.Size(307, 21);
             this.ramoComboBox.TabIndex = 0;
+            this.ramoComboBox.SelectedIndexChanged += new System.EventHandler(this.ramoComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -76,6 +80,7 @@
             this.nameTxtBox.Name = "nameTxtBox";
             this.nameTxtBox.Size = new System.Drawing.Size(147, 20);
             this.nameTxtBox.TabIndex = 3;
+       
             // 
             // surnameTxtBox
             // 
@@ -83,6 +88,7 @@
             this.surnameTxtBox.Name = "surnameTxtBox";
             this.surnameTxtBox.Size = new System.Drawing.Size(147, 20);
             this.surnameTxtBox.TabIndex = 4;
+      
             // 
             // salaComboBox
             // 
@@ -91,6 +97,7 @@
             this.salaComboBox.Name = "salaComboBox";
             this.salaComboBox.Size = new System.Drawing.Size(307, 21);
             this.salaComboBox.TabIndex = 5;
+            this.salaComboBox.SelectedIndexChanged += new System.EventHandler(this.salaComboBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -101,20 +108,6 @@
             this.label3.Size = new System.Drawing.Size(81, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Escoger Sala";
-            // 
-            // saveButton
-            // 
-            this.saveButton.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Image = global::utemAppWF.Properties.Resources.sign_check_icon;
-            this.saveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.saveButton.Location = new System.Drawing.Point(28, 242);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(78, 26);
-            this.saveButton.TabIndex = 7;
-            this.saveButton.Text = "Guardar";
-            this.saveButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // diasCombobox
             // 
@@ -134,31 +127,80 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Escoger Día";
             // 
-            // periodoComboBox
+            // seccionComboBox
             // 
-            this.periodoComboBox.FormattingEnabled = true;
-            this.periodoComboBox.Location = new System.Drawing.Point(161, 196);
-            this.periodoComboBox.Name = "periodoComboBox";
-            this.periodoComboBox.Size = new System.Drawing.Size(307, 21);
-            this.periodoComboBox.TabIndex = 10;
+            this.seccionComboBox.FormattingEnabled = true;
+            this.seccionComboBox.Location = new System.Drawing.Point(531, 51);
+            this.seccionComboBox.Name = "seccionComboBox";
+            this.seccionComboBox.Size = new System.Drawing.Size(92, 21);
+            this.seccionComboBox.TabIndex = 10;
+            this.seccionComboBox.SelectedIndexChanged += new System.EventHandler(this.seccionComboBox_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(25, 199);
+            this.label5.Location = new System.Drawing.Point(474, 54);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 13);
+            this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Escoger Periodo";
+            this.label5.Text = "Sección";
+            // 
+            // numSalaTxtBox
+            // 
+            this.numSalaTxtBox.Location = new System.Drawing.Point(531, 123);
+            this.numSalaTxtBox.Name = "numSalaTxtBox";
+            this.numSalaTxtBox.Size = new System.Drawing.Size(92, 20);
+            this.numSalaTxtBox.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(474, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "N° Sala";
+            // 
+            // refreshBttn
+            // 
+            this.refreshBttn.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshBttn.Image = global::utemAppWF.Properties.Resources.if_sync_126579__1_1;
+            this.refreshBttn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.refreshBttn.Location = new System.Drawing.Point(507, 211);
+            this.refreshBttn.Name = "refreshBttn";
+            this.refreshBttn.Size = new System.Drawing.Size(116, 44);
+            this.refreshBttn.TabIndex = 14;
+            this.refreshBttn.Text = "Refrescar";
+            this.refreshBttn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.refreshBttn.UseVisualStyleBackColor = true;
+            this.refreshBttn.Click += new System.EventHandler(this.refreshBttn_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Image = global::utemAppWF.Properties.Resources.sign_check_icon__1_;
+            this.saveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.saveButton.Location = new System.Drawing.Point(28, 211);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(114, 44);
+            this.saveButton.TabIndex = 7;
+            this.saveButton.Text = "Guardar";
+            this.saveButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // agregarDatosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 406);
+            this.ClientSize = new System.Drawing.Size(652, 344);
+            this.Controls.Add(this.refreshBttn);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numSalaTxtBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.periodoComboBox);
+            this.Controls.Add(this.seccionComboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.diasCombobox);
             this.Controls.Add(this.saveButton);
@@ -171,7 +213,6 @@
             this.Controls.Add(this.ramoComboBox);
             this.Name = "agregarDatosForm";
             this.Text = "agregarDatosForm";
-            this.Load += new System.EventHandler(this.agregarDatosForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +230,10 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.ComboBox diasCombobox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox periodoComboBox;
+        private System.Windows.Forms.ComboBox seccionComboBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox numSalaTxtBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button refreshBttn;
     }
 }

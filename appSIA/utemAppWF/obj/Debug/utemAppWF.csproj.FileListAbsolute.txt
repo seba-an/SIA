@@ -1,42 +1,20 @@
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\utemAppWF.exe.config
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\utemAppWF.exe
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\utemAppWF.pdb
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.csprojResolveAssemblyReference.cache
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.Properties.Resources.resources
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.csproj.GenerateResource.Cache
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.csproj.CoreCompileInputs.cache
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.exe
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.pdb
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.Form1.resources
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\EntityFramework.dll
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\System.Data.SQLite.dll
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\System.Data.SQLite.EF6.dll
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\System.Data.SQLite.Linq.dll
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\EntityFramework.xml
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\System.Data.SQLite.xml
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\obj\Debug\utemAppWF.agregarDatosForm.resources
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\utemAppWF.exe.config
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\utemAppWF.exe
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\utemAppWF.pdb
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\EntityFramework.dll
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\EntityFramework.SqlServer.dll
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.dll
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.EF6.dll
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.Linq.dll
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\EntityFramework.xml
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\EntityFramework.SqlServer.xml
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.xml
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.dll.config
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.csprojResolveAssemblyReference.cache
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.agregarDatosForm.resources
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.Form1.resources
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.Properties.Resources.resources
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.csproj.GenerateResource.Cache
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.csproj.CoreCompileInputs.cache
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.exe
-C:\git\cloned-repo\proyecto SIA repo\appSIA\utemAppWF\obj\Debug\utemAppWF.pdb
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\Dapper.dll
-C:\Users\Steban\Documents\Visual Studio 2017\Projects\utemAppWF\utemAppWF\bin\Debug\Dapper.xml
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.csprojResolveAssemblyReference.cache
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.agregarDatosForm.resources
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.Form1.resources
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.csproj.GenerateResource.Cache
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\utemAppWF.exe.config
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\utemAppWF.exe
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\utemAppWF.pdb
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\EntityFramework.dll
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\EntityFramework.SqlServer.dll
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.dll
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.EF6.dll
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.Linq.dll
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\EntityFramework.xml
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\EntityFramework.SqlServer.xml
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.xml
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\bin\Debug\System.Data.SQLite.dll.config
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.Properties.Resources.resources
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.csproj.CoreCompileInputs.cache
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.exe
+C:\git\cloned-repo\SIA project repo 2\v1\appSIA\utemAppWF\obj\Debug\utemAppWF.pdb

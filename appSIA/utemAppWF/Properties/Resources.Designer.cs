@@ -83,6 +83,16 @@ namespace utemAppWF.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_questionssvg_15797931 {
+            get {
+                object obj = ResourceManager.GetObject("if_questionssvg_15797931", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_sync_126579 {
             get {
                 object obj = ResourceManager.GetObject("if_sync_126579", resourceCulture);
@@ -103,9 +113,39 @@ namespace utemAppWF.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_sync_126579__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("if_sync_126579 (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_sync_1265791 {
+            get {
+                object obj = ResourceManager.GetObject("if_sync_1265791", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sign_check_icon {
             get {
                 object obj = ResourceManager.GetObject("sign-check-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sign_check_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("sign-check-icon (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

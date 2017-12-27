@@ -33,21 +33,79 @@ namespace utemAppWF
             DataAccess dA = new DataAccess();
       
 
-            dA.BindComboBox(ramoComboBox, $"select id_seccion, asignatura from Seccion", "asignatura", "id_seccion", "Seccion");
-            dA.BindComboBox(salaComboBox, $"select id_laboratorio, nombre from Laboratorio", "nombre", "Laboratorio", "id_laboratorio"); 
+            dA.BindComboBox(ramoComboBox, $"select Nombre_Asignatura from Asignatura", "Nombre_Asignatura", "Asignatura", "id_asignatura");
+            dA.BindComboBox(salaComboBox, $"select id_laboratorio, nombre from Laboratorio", "nombre", "Laboratorio", "id_laboratorio");
+           
 
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            DataSaving dS = new DataSaving();
 
-            dS.agregarAsignacion(ramoComboBox,salaComboBox,diasCombobox);
+
+            if(ramoComboBox != null || salaComboBox != null || diasCombobox != null || seccionComboBox != null)
+            {
+                DataSaving dS = new DataSaving();
+                dS.agregarAsignacion(seccionComboBox, numSalaTxtBox, "id_seccion","id_laboratorio");
+
+            }
+            else
+            {
+                MessageBox.Show("No se han ingresado datos");
+            }
+
         }
 
-        private void agregarDatosForm_Load(object sender, EventArgs e)
+        private void ramoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataAccess dA2 = new DataAccess();
+
+            surnameTxtBox.Text = ""; 
+            nameTxtBox.Text = "";
+
+            if (ramoComboBox != null)
+            {
+                dA2.BindComboBox(seccionComboBox, $"select codigo from Seccion where seccion.asignatura == '" + ramoComboBox.Text + "'", 
+                    "codigo", "Seccion", "id_seccion");
+                dA2.nombreCompletoTextbox(ramoComboBox, nameTxtBox, $"select * from Encargado, Seccion where Seccion.asignatura == '" + ramoComboBox.Text + "' and Seccion.cod_encargado == Encargado.id_encargado", 
+                    "nombre");
+                dA2.nombreCompletoTextbox(ramoComboBox, surnameTxtBox, $"select * from Encargado, Seccion where Seccion.asignatura == '" + ramoComboBox.Text + "' and Seccion.cod_encargado == Encargado.id_encargado",
+                    "apellido");
+
+            }
+
+        }
+
+        private void seccionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void salaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataAccess dA3 = new DataAccess();
+            numSalaTxtBox.Text = "";
+
+            if (salaComboBox != null)
+            {
+                dA3.fetchTextBox(salaComboBox, numSalaTxtBox, $"select * from laboratorio where laboratorio.nombre == '" + salaComboBox.Text + "'", "id_laboratorio");
+            }
+        }
+
+        private void refreshBttn_Click(object sender, EventArgs e)
+        {
+            salaComboBox.Text = "";
+            seccionComboBox.Text = "";
+            ramoComboBox.Text = "";
+            diasCombobox.Text = "";
+            nameTxtBox.Text = "";
+            surnameTxtBox.Text = "";
+            numSalaTxtBox.Text = "";
+
+        }
+
+
+
+
     }
 }
